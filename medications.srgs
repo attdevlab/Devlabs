@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE grammar PUBLIC "-//W3C//DTD GRAMMAR 1.0//EN"
+          "http://www.w3.org/TR/speech-grammar/grammar.dtd">
+<grammar version="1.0" mode="voice" root="OTC" tag-format="semantics/1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="OTC " scope="public">
+	<one-of>
+      	<item>fexofenadine</item>
+      	<item>diphenhydramine</item>
+      	<item>brompheniramine</item>
+      	<item>loratadine</item>
+      	<item>clemastine</item>
+      	<item>chlorpheniramine</item>
+      	<item>certirizine</item>
+    </one-of>
+  </rule>
+</grammar>
