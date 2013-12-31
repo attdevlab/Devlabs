@@ -46,10 +46,9 @@ https://api.att.com/oauth/token
 
 curl --request POST --insecure ^
 --header "Authorization: Bearer <access token>" ^
---header "Accept: application/json" -H "Content-Type: application/json" ^
---data "{'Addresses': ['tel:5555555555', 'jane@example.com'], 'Text': 'Hello world'}" ^
-https://api.att.com/rest/1/MyMessages
-
+--header "Accept: application/json" -H "Content-Type: application/xml" ^
+--data "<messageRequest><addresses>tel:5555555555</addresses><addresses>someone@att.com</addresses><text>Hello world</text></messageRequest> " ^
+https://api.att.com/myMessages/v2/messages
 
 ---- Messaging Lab 5 -----
 
