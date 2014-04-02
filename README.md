@@ -5,3 +5,6 @@ KhRtrJl8xF7oGm6OKN9D6WrOIMLwxrHr
 
 Auth Code with Speech APIs
 OPSwixudlqBMc6qzHmbXYUTZd6Dci16l
+
+Ad Access Token
+eZgAe8zx5xkGq00d6WzD1gAvhYneBB9A
