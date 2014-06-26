@@ -3,7 +3,7 @@ Lab 1
 
 Send data:
 
-curl --request POST --include --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" --data '{"values": [{"value": "0"}]}' http://api-m2x.att.com/v1/feeds/{feed-ID}/streams/speed/values
+curl --request POST --include --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" --data @sample_post.txt http://api-m2x.att.com/v1/feeds/{feed-ID}/streams/speed/values
 
 Retrieve data:
 
@@ -47,5 +47,4 @@ Lab 3
 Create trigger:
 
 curl --request POST --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" --data '{ "name": "dangerous tilt", "stream": "tilt", "condition": ">", "value": "60", "callback_url": "{url}", "status": "enabled" }' http://api-m2x.att.com/v1/feeds/{feed-ID}/triggers?pretty=true
-
 
