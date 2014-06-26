@@ -1,0 +1,51 @@
+Lab 1
+-----
+
+Send data:
+
+curl --request POST --include --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" --data '{"values": [{"value": "0"}]}' http://api-m2x.att.com/v1/feeds/{feed-ID}/streams/speed/values
+
+Retrieve data:
+
+curl --request GET --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" http://api-m2x.att.com/v1/feeds/{feed-ID}/streams/speed/values?pretty=true
+
+
+Lab 2
+-----
+
+Code to add:
+
+    while (true) {
+        // Get accelerometer data
+        float x, y, z;
+        x = acc.getAccX();
+        y = acc.getAccY();
+        z = acc.getAccZ();
+        printf("Accel X: %1.2f, Y: %1.2f, Z: %1.2f\n\r", x, y, z);
+        
+        // Calculate pitch and roll. Find the maximum tilt angle.
+        float pitch = atan(x / sqrt(y * y + z * z));
+        float roll = atan(y / sqrt(x * x + z * z));
+        float maxTilt = 
+            max(abs(roll), abs(pitch)) * 180.0 / 3.14159;
+        printf("pitch: %5.1f roll: %5.1f maxTilt: %5.1f\n\r", 
+            pitch, roll, maxTilt); 
+        
+        // If the maximum title is over 20 degrees, then send 
+        // data to stream
+        if (maxTilt > 20) {
+            ret = m2xClient.post(feed, stream, maxTilt);
+            printf("send() returned %d\r\n", ret);
+            wait(1);
+        }
+ }
+
+
+Lab 3
+----
+
+Create trigger:
+
+curl --request POST --header "Content-Type: application/json" --header "X-M2X-KEY: {API-key}" --data '{ "name": "dangerous tilt", "stream": "tilt", "condition": ">", "value": "60", "callback_url": "{url}", "status": "enabled" }' http://api-m2x.att.com/v1/feeds/{feed-ID}/triggers?pretty=true
+
+
